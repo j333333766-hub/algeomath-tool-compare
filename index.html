@@ -105,6 +105,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     <li><a href="#position">알지오매스의 위치</a></li>
     <li><a href="#embed">임베드 API</a></li>
     <li><a href="#mobile">모바일 사용성</a></li>
+    <li><a href="#speed">개선 속도</a></li>
     <li><a href="#direction">발전 방향</a></li>
     <li><a href="#aiep">AIEP 탑재</a></li>
     <li><a href="#sources">출처</a></li>
@@ -340,8 +341,39 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   </ul>
 </section>
 
+<section id="speed">
+  <h2><span class="n">7</span>개선 속도와 개발 방식</h2>
+  <p>기능 하나가 현장에 오기까지 너무 오래 걸립니다. '25년 사이트 운영·기능 개선은 연 36건(한 달 3건 정도)이었고, '26년에도 행렬 편집기·입체도형 자르기·이차곡선 등 몇 가지를 한 해 과업으로 잡았습니다. 신규 3D는 2~4년을 예상합니다. 반면 AI 코딩 도구를 쓰면 새 기능을 만들어 수업에서 써 보는 데 드는 시간이 몇 시간에서 며칠로 줄었습니다.</p>
+
+  <div class="panel">
+    <h3>현장 사례: 교사 한 명이 AI 코딩 도구로 더해 본 기능 (2026. 10. 3.~5.)</h3>
+    <ul>
+      <li>알지오매스 2D·3D를 인터넷 없이 실행하는 수업용 시제품을 만들고, 그 위에 3D 기능을 더해 봤습니다.</li>
+      <li>사흘 동안 더한 것: 자동 임시 저장·복구, STL·GLB·USDZ 내보내기(3D 프린팅·AR), 수식 입력창, 함수식 곡면, 방정식·매개변수 곡면, 슬라이더, 선분·직선·벡터·중점·평면·각뿔·각기둥·측정, 점 찍기·옮기기·되돌리기·터치.</li>
+      <li>단계마다 자동 검사를 붙여 <b>289개 검사</b>를 통과했습니다. 신규 3D 로드맵 2~3단계에 나오는 곡면·슬라이더·입체 생성·측정을 시제품 수준에서 미리 써 볼 수 있었던 셈입니다.</li>
+      <li>연수 사이트 도구도 요청한 날 만들어 배포하고 시험했습니다(예: 이 페이지 5절의 폴리패드 기록 방식 비교 화면).</li>
+    </ul>
+    <p class="note">시제품은 기존 엔진 위에 덧붙인 것이라 명령 처리·객체 의존 관계와 같은 핵심 구조까지 대신하지는 않습니다. 다만 "필요한 기능을 빨리 만들어 써 보고 판단하는 일"은 이제 현장에서도 할 수 있다는 것을 보여 줍니다.</p>
+  </div>
+
+  <h3>제안: 두 갈래 개발 체계</h3>
+  <div class="steps">
+    <div class="step"><span class="when">① 실험실 · 며칠~2주</span><p>교사·자문단이 필요한 기능을 요청하면 AI 코딩 도구로 바로 시제품을 만들어, 별도 <b>'알지오 실험실'</b> 주소에서 수업에 써 보고 반응·오류를 모읍니다.</p><span class="note">정식 서비스와 분리, "시범" 표시</span></div>
+    <div class="step"><span class="when">② 정식 반영 · 격주~월 단위</span><p>실험실에서 검증된 기능만 골라 정식 코드로 다듬어 반영합니다. 수학적 정확성, 보안·개인정보, 접근성, 기존 파일 호환을 검사합니다.</p><span class="note">공개 API·명령 체계가 있어야 실험실 기능을 붙였다 뗄 수 있음</span></div>
+  </div>
+  <h3>과업 지시서에 넣을 것</h3>
+  <ol>
+    <li>AI 코딩 도구 활용과 <b>자동 검사(회귀 시험) 의무화</b>. 기능마다 검사를 붙여, 고쳐도 다른 기능이 깨지지 않게 합니다.</li>
+    <li><b>배포 주기</b>(예: 격주)와 <b>오류 수정 목표 시간</b>(예: 수업을 막는 오류는 48시간)을 적습니다.</li>
+    <li>성과 지표에 <b>"요청부터 시범·반영까지 걸린 날수"</b>를 넣습니다.</li>
+    <li>현장 요청과 오류는 누구나 보는 <b>공개 게시판</b>으로 받고 처리 상태를 공개합니다.</li>
+    <li>신규 3D는 "2~4년"을 단계별로 쪼개 <b>첫 시범판을 몇 달 안에</b> 내고, 수업 반응을 보며 넓힙니다.</li>
+  </ol>
+  <p class="note">AI로 만든 시제품도 교점·부피 계산, 결과가 없는 경우의 처리 같은 수학적 정확성을 검증해야 하고, 외부 코드·라이브러리의 라이선스 확인은 실험실에서도 똑같이 지켜야 합니다.</p>
+</section>
+
 <section id="direction">
-  <h2><span class="n">7</span>발전 방향</h2>
+  <h2><span class="n">8</span>발전 방향</h2>
   <p>GeoGebra·Desmos는 기능 폭에서 앞서 있고 무료입니다. 같은 기능을 늦게 만드는 것만으로는 선택받기 어려우므로, 해외 도구가 할 수 없는 일에 집중하고 따라잡기는 교육과정에 꼭 필요한 범위로 한정하는 편이 좋습니다.</p>
   <div class="dir">
     <article><span class="k">A</span><h3>국가 플랫폼 안으로 들어가기</h3><p>AIEP·교과서·교육청 플랫폼에 기본 탑재되어, 학생이 따로 가입하지 않아도 수업 흐름 안에서 열리게 합니다. <b>근거</b>: Desmos가 SAT 내장으로 확산된 것과 같은 원리입니다.</p></article>
@@ -356,7 +388,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 </section>
 
 <section id="aiep">
-  <h2><span class="n">8</span>AIEP 탑재</h2>
+  <h2><span class="n">9</span>AIEP 탑재</h2>
   <h3>AIEP는 무엇인가</h3>
   <ul>
     <li><b>인공지능 맞춤형 교수학습 플랫폼(AIEP)</b>: 서울·인천 등 11개 시·도교육청이 공동 구축했습니다. 구글·웨일 등의 학습관리시스템을 바탕으로 수업 관리를 하나로 모으고, 통합 로그인(SSO)으로 여러 에듀테크를 한 계정으로 쓰게 하며, AI 학급 대시보드로 학습 현황을 보여 줍니다.</li>
@@ -397,7 +429,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 </section>
 
 <section id="sources" class="src">
-  <h2><span class="n">9</span>출처</h2>
+  <h2><span class="n">10</span>출처</h2>
   <ul>
     <li>자문 자료: [붙임1] 알지오매스 중장기 3D 개발 로드맵(2026. 11.), [붙임 2-1] 알지오매스 운영 성과 및 발전 방향 검토(안), [붙임 2-2] 연차별 산출내역</li>
     <li>Desmos: <a href="https://help.desmos.com/hc/en-us/articles/4405017454477--What-s-New-at-Desmos-Studio">What's New at Desmos Studio</a> · <a href="https://blog.desmos.com/articles/beta-3d-release">3D Calculator 베타</a> · <a href="https://blog.desmos.com/articles/geometry-beta-release/">Geometry 베타</a> · <a href="https://help.desmos.com/hc/en-us/articles/19736835727885-Extending-from-2D-to-3D">2D에서 3D로</a> · <a href="https://amplify.com/news/amplify-acquires-desmos-curriculum-to-build-the-future-of-math-instruction-desmos-calculators-to-remain-independent-and-free-to-all/">Amplify 인수 발표</a> · <a href="https://amplify.com/blog/problem-based-learning/introducing-amplify-classroom/">Amplify Classroom</a> · <a href="https://amplify.com/impact-innovation/">Amplify AI 연구</a> · <a href="https://danmeyer.substack.com/p/how-we-built-discussion-moments">Discussion Moments</a></li>
