@@ -256,7 +256,9 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
       <li>쓴 기능은 네 가지입니다. 캔버스 만들기(메뉴 줄이기), <b>바뀔 때 알림</b>, <b>상태를 JSON으로 꺼내고 넣기</b>, <b>놓인 타일만 그림으로 내보내기</b>.</li>
       <li>이것으로 테셀레이션 미션별 제출(그림·타일 요약·조합), 8초마다 진행 과정 저장, 강사용 실시간 그림판을 한나절 만에 만들었습니다.</li>
       <li>데이터는 교사 사이트에만 쌓였고, 연수생은 폴리패드 계정이 필요 없었습니다.</li>
-      <li>이용 조건: 등록한 주소에서만 키가 동작, "Powered by Polypad" 표시 유지, 폴리패드 파일을 자기 서버에 복사하지 않기.</li>
+      <li>공식 문서를 보니 더 정교한 기능도 있었습니다. <b>change 이벤트가 타일별로 [이전, 이후]를 주어</b> 그림을 찍지 않아도 놓고 옮기고 지운 전체 과정을 남길 수 있고, 정답 판정(validate 이벤트, 두 상태 비교), 타일 메뉴·삭제·회전 끄기, 타일 잠금도 됩니다.</li>
+      <li>이용 조건: 도메인을 적어 키 발급, <b>연 1만 회 미만 요청은 무료</b>(상업 이용 포함), 그 이상·상표 제거·스크립트 자체 호스팅은 상업 라이선스. 응답 캐시·중계 금지, Amplify·Polypad 표시를 가리지 않기.</li>
+      <li>따라서 교사 한 명의 연수·수업 규모는 무료로 충분하지만, 학교 전체·교육청·전국 플랫폼 규모는 상업 계약이 필요하고 오프라인으로는 쓸 수 없습니다. 주소는 최신판(latest)만 문서화돼 있고 2026년 v8.0.0에 호환이 깨지는 변경이 있었습니다.</li>
     </ul>
   </div>
 
@@ -266,11 +268,14 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     <tbody>
       <tr><th scope="row">키 발급</th><td class="me"><span class="c x">×</span>공개 신청 제도 없음(AIDT·기관 연계 위주)</td><td><span class="c o">○</span>교사 개인이 사이트 주소로 신청</td><td><span class="c o">○</span>키 없이 비상업 이용</td><td><span class="c o">○</span>키 발급, 비상업 무료</td></tr>
       <tr><th scope="row">공식 문서</th><td class="me"><span class="c x">×</span>명령을 내부 코드 분석으로 찾아 써야 함</td><td><span class="c o">○</span></td><td><span class="c o">○</span></td><td><span class="c o">○</span></td></tr>
-      <tr><th scope="row">바뀔 때 알림</th><td class="me"><span class="c x">×</span>없음, 몇 초마다 상태를 통째로 요청</td><td><span class="c o">○</span>change 이벤트</td><td><span class="c o">○</span>추가·수정·삭제 등 약 80종</td><td><span class="c o">○</span></td></tr>
+      <tr><th scope="row">바뀔 때 알림</th><td class="me"><span class="c x">×</span>없음, 몇 초마다 상태를 통째로 요청</td><td><span class="c o">○</span>change(타일별 이전·이후), move, validate 등</td><td><span class="c o">○</span>추가·수정·삭제 등 약 80종</td><td><span class="c o">○</span></td></tr>
       <tr><th scope="row">상태 꺼내기·넣기</th><td class="me"><span class="c t">△</span>가능하나 압축 문자열, 형식 비공개</td><td><span class="c o">○</span>JSON</td><td><span class="c o">○</span>XML(스키마 공개)·파일</td><td><span class="c o">○</span>JSON</td></tr>
       <tr><th scope="row">상태에 담긴 정보</th><td class="me"><span class="c o">○</span>객체 종류 177가지, 이름, 좌표, <b>무엇으로 만들었는지(의존 관계)</b></td><td><span class="c t">△</span>타일 종류·위치</td><td><span class="c o">○</span>작도 명령·의존 관계</td><td><span class="c t">△</span>식·설정</td></tr>
       <tr><th scope="row">그림 내보내기</th><td class="me"><span class="c x">×</span>공식 방법 불분명</td><td><span class="c o">○</span></td><td><span class="c o">○</span>PNG·SVG</td><td><span class="c o">○</span></td></tr>
-      <tr><th scope="row">외부 이용 조건</th><td class="me"><span class="c x">×</span>문서 없음</td><td><span class="c o">○</span>표시 의무·복사 금지 명시</td><td><span class="c o">○</span>비상업 이용 조건</td><td><span class="c o">○</span></td></tr>
+      <tr><th scope="row">정답 판정</th><td class="me"><span class="c x">×</span></td><td><span class="c o">○</span>validate 이벤트, 두 상태 비교</td><td><span class="c t">△</span>스크립트로 직접</td><td><span class="c o">○</span>활동 안 CL</td></tr>
+      <tr><th scope="row">외부 이용 조건</th><td class="me"><span class="c x">×</span>문서 없음</td><td><span class="c o">○</span>약관 공개, 표시 의무·자체 호스팅 금지</td><td><span class="c o">○</span>비상업 이용 조건</td><td><span class="c o">○</span></td></tr>
+      <tr><th scope="row">이용 규모</th><td class="me"><span class="c o">○</span>공공 무료, 제한 없음</td><td><span class="c t">△</span>연 1만 회 미만 무료, 그 이상 상업 라이선스</td><td><span class="c t">△</span>비상업만 무료</td><td><span class="c t">△</span>비상업 무료</td></tr>
+      <tr><th scope="row">오프라인</th><td class="me"><span class="c t">△</span>설치형 개발(비공개)</td><td><span class="c x">×</span>스크립트 자체 호스팅 금지</td><td><span class="c o">○</span>설치형</td><td><span class="c x">×</span></td></tr>
     </tbody>
   </table>
   </div>
@@ -278,7 +283,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   <h3>알지오매스에 필요한 것</h3>
   <ol>
     <li><b>교사·연구자용 공개 API</b>: 사이트 주소를 등록하면 키를 주고, 최소한 명령 실행, 상태 읽기·쓰기(형식 공개), 바뀔 때 알림, 그림 내보내기를 제공합니다. 이용 조건도 문서로 정합니다. 2.0 과제 1-③을 교육청 플랫폼 연계에서 여기까지 넓히는 것입니다.</li>
-    <li><b>알림 형식 = 학습 데이터 형식</b>: "어떤 명령으로 무엇을 만들었다"를 알림으로 보내면, 임베드한 사이트(교사 사이트·AIEP·교육청 플랫폼)와 재단 학습저장소(xAPI)가 같은 자료를 받습니다. 명령시스템을 만들면 거의 덤으로 생기는 기능입니다.</li>
+    <li><b>알림 형식 = 학습 데이터 형식</b>: 폴리패드의 알림은 "타일이 어디로 옮겨졌다" 수준입니다. 알지오매스가 "어떤 명령으로, 어떤 객체들을 써서, 무엇을 만들었다"를 알림으로 보내면 한 단계 더 깊은 학습 데이터가 되고, 임베드한 사이트(교사 사이트·AIEP·교육청 플랫폼)와 재단 학습저장소(xAPI)가 같은 자료를 받습니다. 명령시스템을 만들면 거의 덤으로 생기는 기능입니다.</li>
     <li><b>데이터 두 갈래</b>: 재단 저장소에 쌓는 길과, 폴리패드처럼 임베드한 기관이 직접 받는 길을 모두 열어 둡니다.</li>
     <li><b>작도 판정 도우미</b>: 의존 관계 정보를 살려 "점을 끌어도 수선의 발로 유지되는가" 같은 판정을 API로 주면, 과제 자동 채점·AI 평가와 바로 이어집니다.</li>
     <li><b>알지오매스키즈 자유 캔버스</b>: 교구를 골라 자유롭게 놓는 화면을 같은 API로 임베드할 수 있게 해 초등 영역을 지킵니다.</li>
@@ -347,9 +352,9 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     <li>자문 자료: [붙임1] 알지오매스 중장기 3D 개발 로드맵(2026. 11.), [붙임 2-1] 알지오매스 운영 성과 및 발전 방향 검토(안), [붙임 2-2] 연차별 산출내역</li>
     <li>Desmos: <a href="https://help.desmos.com/hc/en-us/articles/4405017454477--What-s-New-at-Desmos-Studio">What's New at Desmos Studio</a> · <a href="https://blog.desmos.com/articles/beta-3d-release">3D Calculator 베타</a> · <a href="https://blog.desmos.com/articles/geometry-beta-release/">Geometry 베타</a> · <a href="https://help.desmos.com/hc/en-us/articles/19736835727885-Extending-from-2D-to-3D">2D에서 3D로</a> · <a href="https://amplify.com/news/amplify-acquires-desmos-curriculum-to-build-the-future-of-math-instruction-desmos-calculators-to-remain-independent-and-free-to-all/">Amplify 인수 발표</a> · <a href="https://amplify.com/blog/problem-based-learning/introducing-amplify-classroom/">Amplify Classroom</a> · <a href="https://amplify.com/impact-innovation/">Amplify AI 연구</a> · <a href="https://danmeyer.substack.com/p/how-we-built-discussion-moments">Discussion Moments</a></li>
     <li>GeoGebra: <a href="https://help.geogebra.org/hc/en-us/articles/15089771663645-Introducing-GeoGebra-Math-Practice">Introducing Math Practice</a> · <a href="https://help.geogebra.org/hc/en-us/articles/15294353125533-Teachers-Using-GeoGebra-Math-Practice-in-class">Math Practice 수업 활용</a></li>
-    <li>Polypad: <a href="https://polypad.amplify.com/faqs">Polypad FAQ</a> · <a href="https://mathigon.org/polypad">Mathigon Polypad</a> · <a href="https://www.techlearning.com/how-to/what-is-polypad-and-how-can-teachers-use-it">Tech&amp;Learning 소개</a></li>
+    <li>Polypad: <a href="https://polypad.amplify.com/api/documentation">API 문서</a> · <a href="https://polypad.amplify.com/faqs">Polypad FAQ</a> · <a href="https://mathigon.org/polypad">Mathigon Polypad</a> · <a href="https://www.techlearning.com/how-to/what-is-polypad-and-how-can-teachers-use-it">Tech&amp;Learning 소개</a></li>
     <li>AIEP: <a href="https://www.mt.co.kr/stock/2026/02/04/2026020409269630042">아이티센엔텍 AIEP</a> · <a href="https://www.fnewstv.com/news/newsview.php?ncode=1065608738217046">전북 AIEP 전면 도입</a> · <a href="https://www.todayan.com/news/articleView.html?idxno=637369">전북AI 연동</a> · <a href="https://www.gukjenews.com/news/articleView.html?idxno=3692664">인천 AIEP 통합서비스(국제뉴스)</a> · <a href="https://www.kmaeil.com/news/articleView.html?idxno=651438">인천 AIEP 통합서비스(경인매일)</a> · <a href="https://www.mt.co.kr/industry/2026/07/14/2026071409113876427">체더스 인천 사업 수주</a> · <a href="https://www.in-ed.co.kr/news/articleView.html?idxno=32358">인천교육일보</a></li>
-    <li>폴리패드 API 사례: 2026. 11. 14. 교사 연수 사이트에 실제로 넣어 운영한 코드와 결과(폴리패드 공식 API 문서 페이지는 이번 검토 때 열리지 않아, 이용 조건은 키 발급 때 확인한 내용 기준)</li>
+    <li>폴리패드 API 사례: 2026. 11. 14. 교사 연수 사이트에 실제로 넣어 운영한 코드와 결과와 <a href="https://polypad.amplify.com/api/documentation">Polypad API 공식 문서</a>(2026. 11. 16. 확인, 변경 기록 v8.0.4까지)</li>
     <li>2026년 최신 기능 가운데 공식 발표로 확인하지 못한 내용은 <span class="tag">확인 필요</span>로 표시했습니다.</li>
   </ul>
 </section>
