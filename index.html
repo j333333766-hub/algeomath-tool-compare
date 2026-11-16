@@ -444,6 +444,28 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     </div>
   </div>
 
+  <h3>틴커캐드와 비교해 넣을 것: "틴커캐드처럼 만들고, 알지오처럼 따진다"</h3>
+  <p>틴커캐드(Autodesk, 무료 웹 3D 모델링)는 만들고 출력하는 도구이고, 알지오3D는 수학적으로 탐구하는 도구입니다. 조작 편의와 만들기 기능은 배우고, 수학 정보는 알지오3D만의 강점으로 지킵니다.</p>
+  <div class="tablebox">
+  <table>
+    <thead><tr><th scope="col">틴커캐드 기능</th><th scope="col" class="me">알지오3D에 넣는다면</th><th scope="col">수업 쓰임</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">구멍(빈 도형)·그룹</th><td class="me"><b>입체 합치기·빼기</b></td><td>속이 빈 원기둥, 구멍 뚫린 정육면체의 부피·겨넓이</td></tr>
+      <tr><th scope="row">작업 평면</th><td class="me">입체의 면을 누르면 새 바닥이 됨</td><td>각기둥 위에 각뿔 얹기</td></tr>
+      <tr><th scope="row">눈금자·숫자 입력</th><td class="me"><b>치수 직접 입력·화면 표시</b></td><td>정확한 크기로 만들고 공식 확인</td></tr>
+      <tr><th scope="row">정렬 · 대칭(뒤집기)</th><td class="me">가운데·끝 맞추기, 평면에 대한 대칭이동</td><td>합치기 전 맞추기, 면대칭 입체</td></tr>
+      <tr><th scope="row">회전 손잡이·복제 반복</th><td class="me">터치 회전 고리, 일정 각도 맞춤, 반복 복제(평행·회전 배열)</td><td>회전 대칭 무늬, 규칙적 배열</td></tr>
+      <tr><th scope="row">그림 가져와 밀어 올리기 · 글자 입체</th><td class="me"><b>평면도형 밀어 기둥 만들기(압출)</b>, 3D 글자</td><td>기둥 부피 = 밑넓이 × 높이, 회전체와 짝 활동</td></tr>
+      <tr><th scope="row">코드블록</th><td class="me">블록 실행 한 단계씩 보기, 변수·반복 (블록코딩은 알지오 강점)</td><td>반복 구조 입체</td></tr>
+      <tr><th scope="row">내보내기 STL·OBJ·GLB (iPad 앱은 USDZ도)</th><td class="me">mm·cm 단위, 바닥에 붙이기, 출력판 크기 표시</td><td>3D 프린팅</td></tr>
+      <tr><th scope="row">학급(반 코드로 참여)</th><td class="me">3D 작품을 알지오모둠 과제로 바로 제출·갤러리</td><td>작품 관리·AR 갤러리</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><b>지킬 강점</b>: 부피·겨넓이 자동 계산·좌표·측정, 전개도·쌓기나무·회전체, 작도·의존 관계·곡면 그래프. 예를 들어 입체 빼기로 구멍 뚫린 정육면체를 만들면 알지오3D는 부피·겨넓이를 바로 보여 주고 전개도까지 펼칠 수 있습니다. 틴커캐드에는 없는 일입니다.</p>
+  <p><b>우선순위</b>: ① 입체 합치기·빼기 + 치수 입력 + 부피·겨넓이 자동 표시를 함께 ② 압출(기둥)과 회전(회전체)을 한 흐름으로 ③ 작업 평면·정렬·각도 맞춤은 변환 도구와 함께 ④ 3D 프린팅 맞춤·모둠 제출은 내보내기·AR과 같은 시기.</p>
+  <p class="note">틴커캐드 기능은 공개 사용 안내 자료로 확인(작업 평면·눈금자·정렬·대칭·그룹·구멍·내보내기·코드블록·학급). 복제 반복·각도 맞춤·그림 가져오기는 일반적으로 알려진 기능이나 직접 확인하지는 않았습니다.</p>
+
   <h3>연차별 제안 (2.0 이행계획에 3D 줄 추가)</h3>
   <div class="tablebox">
   <table>
@@ -451,7 +473,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     <tbody>
       <tr><th scope="row">2027 상반기</th><td>모바일 개선(다각형 닫기·단추·미리보기 선), 부채꼴·반원 도구, 설명선 글꼴 오류, <b>GLB·USDZ 내보내기</b></td><td>1단계 시범판(점·선·평면·교점·저장), 2D와 공통 명령 규격</td><td>최소 공개 API</td></tr>
       <tr><th scope="row">2027 하반기</th><td><b>웹 AR 보기 + QR</b>, 실제 크기, AR 촬영·제출, <b>도형 합치기·빼기</b></td><td>중학교 활동 우선(위치 관계·겨넓이·부피)</td><td>알지오문서·모둠 연동, 시범학교</td></tr>
-      <tr><th scope="row">2028</th><td><b>변환 도구</b>(대칭·회전·평행·닮음, 터치 손잡이)</td><td>2단계(곡면·슬라이더·수식 연동)</td><td>탐구 데이터 수집, 모둠 AR 갤러리</td></tr>
+      <tr><th scope="row">2028</th><td><b>변환 도구</b>(대칭·회전·평행·닮음, 터치 손잡이), <b>입체 합치기·빼기·치수 입력·압출</b>, 작업 평면·정렬</td><td>2단계(곡면·슬라이더·수식 연동)</td><td>탐구 데이터 수집, 모둠 AR 갤러리</td></tr>
       <tr><th scope="row">2029</th><td>신규 3D로 옮길지 결정</td><td>3단계(음함수·매개변수·교선·측정)</td><td>AI 입력(스케치 → 입체) 시범</td></tr>
       <tr><th scope="row">2030</th><td colspan="2"><b>하나의 알지오3D로 통합</b>, 4단계(블록코딩·플러그인)</td><td>AIEP·교육청 플랫폼 연계 확대</td></tr>
     </tbody>
@@ -507,6 +529,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     <li>자문 자료: [붙임1] 알지오매스 중장기 3D 개발 로드맵(2026. 11.), [붙임 2-1] 알지오매스 운영 성과 및 발전 방향 검토(안), [붙임 2-2] 연차별 산출내역</li>
     <li>Desmos: <a href="https://help.desmos.com/hc/en-us/articles/4405017454477--What-s-New-at-Desmos-Studio">What's New at Desmos Studio</a> · <a href="https://blog.desmos.com/articles/beta-3d-release">3D Calculator 베타</a> · <a href="https://blog.desmos.com/articles/geometry-beta-release/">Geometry 베타</a> · <a href="https://help.desmos.com/hc/en-us/articles/19736835727885-Extending-from-2D-to-3D">2D에서 3D로</a> · <a href="https://amplify.com/news/amplify-acquires-desmos-curriculum-to-build-the-future-of-math-instruction-desmos-calculators-to-remain-independent-and-free-to-all/">Amplify 인수 발표</a> · <a href="https://amplify.com/blog/problem-based-learning/introducing-amplify-classroom/">Amplify Classroom</a> · <a href="https://amplify.com/impact-innovation/">Amplify AI 연구</a> · <a href="https://danmeyer.substack.com/p/how-we-built-discussion-moments">Discussion Moments</a></li>
     <li>GeoGebra: <a href="https://help.geogebra.org/hc/en-us/articles/15089771663645-Introducing-GeoGebra-Math-Practice">Introducing Math Practice</a> · <a href="https://help.geogebra.org/hc/en-us/articles/15294353125533-Teachers-Using-GeoGebra-Math-Practice-in-class">Math Practice 수업 활용</a></li>
+    <li>Tinkercad: <a href="https://all3dp.com/2/what-is-tinkercad-simply-explained/">All3DP 소개</a> · <a href="https://libguides.uthscsa.edu/3Dmodeling/workplane">UT Health 작업 평면 안내</a> · <a href="https://help.mytsi.org/v2/knowledge-base/tinkercad-terms/">Tinkercad 용어</a> · <a href="https://scil-wiki.su.edu/books/3d-modeling/page/tinkercad">SCIL 위키</a></li>
     <li>Polypad: <a href="https://polypad.amplify.com/api/documentation">API 문서</a> · <a href="https://polypad.amplify.com/faqs">Polypad FAQ</a> · <a href="https://mathigon.org/polypad">Mathigon Polypad</a> · <a href="https://www.techlearning.com/how-to/what-is-polypad-and-how-can-teachers-use-it">Tech&amp;Learning 소개</a></li>
     <li>AIEP: <a href="https://www.mt.co.kr/stock/2026/02/04/2026020409269630042">아이티센엔텍 AIEP</a> · <a href="https://www.fnewstv.com/news/newsview.php?ncode=1065608738217046">전북 AIEP 전면 도입</a> · <a href="https://www.todayan.com/news/articleView.html?idxno=637369">전북AI 연동</a> · <a href="https://www.gukjenews.com/news/articleView.html?idxno=3692664">인천 AIEP 통합서비스(국제뉴스)</a> · <a href="https://www.kmaeil.com/news/articleView.html?idxno=651438">인천 AIEP 통합서비스(경인매일)</a> · <a href="https://www.mt.co.kr/industry/2026/07/14/2026071409113876427">체더스 인천 사업 수주</a> · <a href="https://www.in-ed.co.kr/news/articleView.html?idxno=32358">인천교육일보</a></li>
     <li>폴리패드 API 사례: 2026. 11. 14. 교사 연수 사이트에 실제로 넣어 운영한 코드와 결과와 <a href="https://polypad.amplify.com/api/documentation">Polypad API 공식 문서</a>(2026. 11. 16. 확인, 변경 기록 v8.0.4까지)</li>
