@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>알지오매스와 해외 공학도구 비교</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* 레이아웃: 왼쪽 목차(넓은 화면) + 본문 한 단, 비교표만 가로 스크롤 */
+:root{
+  --bg:#f6f8fa; --surface:#ffffff; --fg:#17212b; --muted:#56636f; --line:#d8dee5;
+  --accent:#1f6f8b; --accent-soft:#e3f0f5;
+  --good:#1d7a4f; --good-bg:#e2f3ea; --mid:#9a6a00; --mid-bg:#fbf0d6; --bad:#a23b3b; --bad-bg:#f8e3e3;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11171d; --surface:#18212a; --fg:#e4eaf0; --muted:#9aa8b5; --line:#2c3945;
+  --accent:#62b6d4; --accent-soft:#1b3340;
+  --good:#6fd0a0; --good-bg:#173528; --mid:#e8c060; --mid-bg:#3a3018; --bad:#ef8f8f; --bad-bg:#3d2020; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11171d; --surface:#18212a; --fg:#e4eaf0; --muted:#9aa8b5; --line:#2c3945;
+  --accent:#62b6d4; --accent-soft:#1b3340;
+  --good:#6fd0a0; --good-bg:#173528; --mid:#e8c060; --mid-bg:#3a3018; --bad:#ef8f8f; --bad-bg:#3d2020; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.7;word-break:keep-all;overflow-wrap:anywhere}
+.wrap{max-width:1180px;margin:0 auto;padding-block:40px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;grid-template-columns:200px minmax(0,1fr);gap:48px}
+nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);align-self:start;font-size:14px}
+nav p{font-size:12px;letter-spacing:.08em;color:var(--muted);margin:0 0 8px}
+nav ol{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+nav a{display:block;padding:5px 10px;border-left:2px solid var(--line);color:var(--muted);text-decoration:none}
+nav a:hover,nav a:focus-visible{color:var(--accent);border-color:var(--accent);outline:none}
+main{min-width:0;display:grid;gap:56px}
+header h1{font-size:clamp(26px,4vw,36px);line-height:1.3;margin:0 0 12px;text-wrap:balance;font-weight:700}
+header .meta{color:var(--muted);font-size:14px;margin:0}
+.lead{font-size:18px;max-width:46em;margin:20px 0 0}
+section{display:grid;gap:18px;scroll-margin-top:24px}
+h2{font-size:23px;margin:0;text-wrap:balance;display:flex;gap:12px;align-items:baseline}
+h2 .n{font-family:var(--f-mono);font-size:14px;color:var(--accent)}
+h3{font-size:18px;margin:0}
+p{margin:0;max-width:48em}
+ul{margin:0;padding-left:1.2em;display:grid;gap:6px;max-width:48em}
+.note{font-size:14px;color:var(--muted)}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:4px;background:var(--mid-bg);color:var(--mid);font-weight:600;vertical-align:1px}
+.thesis{background:var(--accent-soft);border-radius:8px;padding:22px 24px;font-size:18px;font-weight:500;max-width:none}
+.thesis strong{color:var(--accent)}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}
+.tool{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px 22px;display:grid;gap:10px;align-content:start;min-width:0}
+.tool h3{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.tool h3 small{font-weight:500;font-size:13px;color:var(--muted)}
+.tool dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:15px}
+.tool dt{color:var(--muted);font-size:13px;padding-top:2px;white-space:nowrap}
+.tool dd{margin:0;min-width:0}
+.bars{display:grid;gap:8px;max-width:640px}
+.bar{display:grid;grid-template-columns:90px 1fr 56px;gap:10px;align-items:center;font-size:14px}
+.bar .track{height:14px;background:var(--line);border-radius:3px;overflow:hidden}
+.bar .fill{height:100%;background:var(--muted)}
+.bar.me .fill{background:var(--accent)}
+.bar .v{font-family:var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+thead th{position:sticky;top:0;background:var(--surface);font-size:13px;color:var(--muted);font-weight:600}
+thead th.me{color:var(--accent)}
+tbody th{font-weight:500;white-space:nowrap}
+td.me{background:var(--accent-soft)}
+tr:last-child>*{border-bottom:0}
+.c{display:inline-block;min-width:22px;text-align:center;font-weight:700;border-radius:4px;padding:0 5px;margin-right:6px}
+.c.o{background:var(--good-bg);color:var(--good)} .c.t{background:var(--mid-bg);color:var(--mid)} .c.x{background:var(--bad-bg);color:var(--bad)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px 22px;display:grid;gap:10px;min-width:0}
+.panel.keep h3{color:var(--good)} .panel.gap h3{color:var(--bad)}
+.panel ol{margin:0;padding-left:1.2em;display:grid;gap:8px}
+.dir{display:grid;gap:12px}
+.dir article{display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 14px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+.dir .k{grid-row:span 2;font-family:var(--f-mono);color:var(--accent);font-size:20px}
+.dir h3{font-size:17px}
+.dir p{font-size:15px;color:var(--muted)}
+.dir p b{color:var(--fg);font-weight:600}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;counter-reset:s}
+.step{border-top:3px solid var(--accent);background:var(--surface);border-radius:0 0 8px 8px;padding:14px 16px;display:grid;gap:6px;align-content:start}
+.step .when{font-family:var(--f-mono);font-size:13px;color:var(--accent)}
+.step p{font-size:15px}
+.step .note{font-size:13px}
+.src{font-size:13px;color:var(--muted)}
+.src ul{gap:4px}
+.src a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:860px){.wrap{grid-template-columns:minmax(0,1fr);gap:24px}nav{position:static}nav ol{display:flex;flex-wrap:wrap;gap:6px}nav a{border:1px solid var(--line);border-radius:4px;padding:3px 10px}}
+@media (max-width:480px){.bar{grid-template-columns:70px 1fr 48px}.tool dl{grid-template-columns:1fr}.tool dt{padding-top:0}}
+</style>
+<style>body{margin:0}</style>
+</head>
+<body>
+
+<div class="wrap">
+<nav aria-label="목차">
+  <p>목차</p>
+  <ol>
+    <li><a href="#targets">비교 대상</a></li>
+    <li><a href="#profiles">도구별 요약</a></li>
+    <li><a href="#matrix">항목별 비교표</a></li>
+    <li><a href="#position">알지오매스의 위치</a></li>
+    <li><a href="#direction">발전 방향</a></li>
+    <li><a href="#aiep">AIEP 탑재</a></li>
+    <li><a href="#sources">출처</a></li>
+  </ol>
+</nav>
+
+<main>
+<header>
+  <h1>알지오매스와 해외 공학도구 비교</h1>
+  <p class="meta">2026년 제3차 알지오매스 자문 회의(11. 17.) 검토 자료 · 2026. 11. 16. 작성</p>
+  <p class="lead">GeoGebra, Desmos, Polypad와 견주어 알지오매스 2.0과 신규 3D가 어디에 힘을 실어야 하는지, 그리고 시·도교육청 AIEP에 알지오매스를 탑재할 필요가 있는지를 정리했습니다.</p>
+</header>
+
+<p class="thesis">GeoGebra·Desmos와 기능으로 경쟁하면 늦습니다. 알지오매스는 <strong>국가 플랫폼(AIEP) 안에 기본으로 들어가 있는 공공 탐구 도구</strong>, <strong>한국 교육과정 순서대로 바로 쓰는 활동</strong>, <strong>학생 탐구 과정을 남기는 데이터</strong>로 차별화하고, 신규 3D는 교육과정에 필요한 범위로 좁혀 빨리 내놓는 것이 좋겠습니다.</p>
+
+<section id="targets">
+  <h2><span class="n">1</span>비교 대상</h2>
+  <ul>
+    <li><b>GeoGebra</b>: 기하·대수·3D·CAS·통계를 한 프로그램에 묶은 범용 도구. 고등학교에서 가장 자주 쓰는 도구입니다.</li>
+    <li><b>Desmos</b>: 그래핑 계산기에서 기하·3D·문서(Notebook)로 넓혔고, 수업 활동 제작의 사실상 표준입니다.</li>
+    <li><b>Polypad</b>: 가상 교구 중심이라 알지오매스키즈와 영역이 겹칩니다.</li>
+    <li>참고: <b>통그라미·CODAP</b>(통계 도구), <b>GeoGebra Math Practice·MATHia·Khan Academy</b>(단계별 대수 조작·학습 데이터 개인화)</li>
+  </ul>
+  <h3>교사가 수업에서 써 본 도구 ('25년 조사, 1,575명 응답)</h3>
+  <div class="bars" role="img" aria-label="알지오매스 42.3%, 지오지브라 26.9%, 통그라미 12.4%, 데스모스 11.1%, 폴리패드 2.9%">
+    <div class="bar me"><span>알지오매스</span><div class="track"><div class="fill" style="width:42.3%"></div></div><span class="v">42.3%</span></div>
+    <div class="bar"><span>지오지브라</span><div class="track"><div class="fill" style="width:26.9%"></div></div><span class="v">26.9%</span></div>
+    <div class="bar"><span>통그라미</span><div class="track"><div class="fill" style="width:12.4%"></div></div><span class="v">12.4%</span></div>
+    <div class="bar"><span>데스모스</span><div class="track"><div class="fill" style="width:11.1%"></div></div><span class="v">11.1%</span></div>
+    <div class="bar"><span>폴리패드</span><div class="track"><div class="fill" style="width:2.9%"></div></div><span class="v">2.9%</span></div>
+  </div>
+  <p class="note">가장 자주 쓰는 도구로는 초등 67.0%, 중학교 61.8%가 알지오매스를 골랐지만, 고등학교는 지오지브라 53.0%로 알지오매스(37.2%)보다 높습니다. 신규 3D가 겨냥하는 공간 기하·3D 그래프가 바로 이 격차가 나는 영역입니다.</p>
+</section>
+
+<section id="profiles">
+  <h2><span class="n">2</span>도구별 요약</h2>
+  <div class="tools">
+    <article class="tool">
+      <h3>GeoGebra <small>민간 · 비상업 무료</small></h3>
+      <dl>
+        <dt>운영</dt><dd>오스트리아에서 시작, 2021년 BYJU'S 인수. 상업적 이용은 별도 라이선스</dd>
+        <dt>범위</dt><dd>그래핑·기하·3D·CAS·확률/통계·스프레드시트. 3D에서 점·선·평면 작도, 교점·교선, 입체도형, 곡면, 모바일 AR까지 갖춤</dd>
+        <dt>수업</dt><dd>GeoGebra Classroom(학생 화면 실시간 확인, Google Classroom 연동), 세계 최대 자료실, Math Practice(단계별 대수 조작)</dd>
+        <dt>확장</dt><dd>공식 Apps API와 문서 공개, 설치형 배포</dd>
+        <dt>AI</dt><dd>공식 AI 튜터는 확인하지 못함 <span class="tag">확인 필요</span></dd>
+        <dt>약점</dt><dd>기능이 많아 진입 장벽이 높음, 운영사 경영 불안, 한국 교육과정 순서 자료 부족</dd>
+      </dl>
+      <p class="note">신규 3D 로드맵 1~4단계 기능 대부분을 이미 제공합니다. 로드맵 예시 그림 대부분이 GeoGebra 3D 화면입니다.</p>
+    </article>
+    <article class="tool">
+      <h3>Desmos <small>공익법인 + Amplify · 무료</small></h3>
+      <dl>
+        <dt>운영</dt><dd>2022년 분리: 계산기는 Desmos Studio(무료 유지), 수업 플랫폼은 Amplify. 2025-26학년도부터 Amplify Classroom</dd>
+        <dt>범위</dt><dd>그래핑(최강점), 기하, 3D 계산기, 행렬, Notebook(글·수식·슬라이더·그래프를 한 문서에, 2026년 베타)</dd>
+        <dt>수업</dt><dd>Activity Builder로 교사가 활동을 만들고 학생 응답을 실시간으로 봄. AI 피드백 작성 돕기·토론 지원을 시범 운영</dd>
+        <dt>확산</dt><dd>미국 디지털 SAT 등 시험 내장 계산기. 화면 낭독·소리로 그래프 듣기 등 접근성이 뛰어남</dd>
+        <dt>확장</dt><dd>API 공개(키 발급, 비상업 무료)</dd>
+        <dt>약점</dt><dd>공간 작도는 GeoGebra보다 약함, 한국 교육과정 자료 부족</dd>
+      </dl>
+      <p class="note">Notebook은 알지오문서와 같은 방향입니다.</p>
+    </article>
+    <article class="tool">
+      <h3>Polypad <small>Amplify · 무료</small></h3>
+      <dl>
+        <dt>운영</dt><dd>Mathigon이 개발, 2021년 Amplify 인수. Desmos·Amplify Classroom과 통합 중</dd>
+        <dt>범위</dt><dd>수 막대·십진 블록·대수 타일·분수·도형 조각·다면체·확률 도구 등 가상 교구</dd>
+        <dt>수업</dt><dd>교사가 캔버스를 만들어 공유, Mathigon 대화형 교과서와 연결, Amplify 활동 안에서 사용</dd>
+        <dt>시사점</dt><dd>통합이 끝나면 "교구 → 그래프 → 기하"가 한 화면에서 이어지는 경쟁자가 됨</dd>
+      </dl>
+      <p class="note">초등은 지금 알지오매스가 압도적이지만, 키즈와 2D·3D를 잇는 학년 간 연결을 먼저 굳혀야 합니다.</p>
+    </article>
+    <article class="tool">
+      <h3>통그라미 · CODAP <small>통계 참고</small></h3>
+      <dl>
+        <dt>통그라미</dt><dd>국내 교사 사용 12.4%, 초·중 비중이 큼</dd>
+        <dt>CODAP</dt><dd>Concord Consortium의 무료 오픈소스, 끌어다 놓기 방식 데이터 탐색</dd>
+        <dt>시사점</dt><dd>알지오매스는 통계 도구가 약해 이 수요를 흡수하지 못함. '26. 7. 13. 자문회의에서도 별도 연구가 필요하다고 지적됨</dd>
+      </dl>
+    </article>
+  </div>
+</section>
+
+<section id="matrix">
+  <h2><span class="n">3</span>항목별 비교표</h2>
+  <div class="legend"><span><span class="c o">○</span>강함</span><span><span class="c t">△</span>일부</span><span><span class="c x">×</span>없음·약함</span><span>2026년 11월 기준, 공개 자료와 사용 경험 바탕</span></div>
+  <div class="tablebox">
+  <table>
+    <thead><tr><th scope="col">항목</th><th scope="col" class="me">알지오매스</th><th scope="col">GeoGebra</th><th scope="col">Desmos</th><th scope="col">Polypad</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">운영 주체</th><td class="me"><span class="c o">○</span>국가(공공), 무료</td><td>민간, 비상업 무료</td><td>민간 공익법인 + Amplify</td><td>Amplify, 무료</td></tr>
+      <tr><th scope="row">한국 교육과정 정합</th><td class="me"><span class="c o">○</span>2015·2022 개정, AIDT 연계 경험</td><td><span class="c t">△</span></td><td><span class="c t">△</span></td><td><span class="c x">×</span></td></tr>
+      <tr><th scope="row">초등 지원</th><td class="me"><span class="c o">○</span>알지오매스키즈</td><td><span class="c t">△</span></td><td><span class="c t">△</span></td><td><span class="c o">○</span></td></tr>
+      <tr><th scope="row">2D 기하 작도</th><td class="me"><span class="c o">○</span></td><td><span class="c o">○</span></td><td><span class="c o">○</span></td><td><span class="c t">△</span></td></tr>
+      <tr><th scope="row">함수 그래프</th><td class="me"><span class="c o">○</span></td><td><span class="c o">○</span></td><td><span class="c o">○</span>최강점</td><td><span class="c x">×</span></td></tr>
+      <tr><th scope="row">입체도형 탐구<br><span class="note">쌓기나무·전개도·회전체</span></th><td class="me"><span class="c o">○</span>기존 알지오3D 강점</td><td><span class="c t">△</span></td><td><span class="c x">×</span></td><td><span class="c t">△</span>다면체</td></tr>
+      <tr><th scope="row">3D 공간 작도·곡면</th><td class="me"><span class="c x">×</span>신규 3D로 계획</td><td><span class="c o">○</span></td><td><span class="c o">○</span>그래프 / <span class="c t">△</span>작도</td><td><span class="c x">×</span></td></tr>
+      <tr><th scope="row">CAS(기호 계산)</th><td class="me"><span class="c t">△</span></td><td><span class="c o">○</span></td><td><span class="c t">△</span></td><td><span class="c x">×</span></td></tr>
+      <tr><th scope="row">통계·데이터</th><td class="me"><span class="c t">△</span>산점도·차트 수준</td><td><span class="c o">○</span></td><td><span class="c t">△</span></td><td><span class="c t">△</span></td></tr>
+      <tr><th scope="row">블록코딩</th><td class="me"><span class="c o">○</span>2D·3D 모두</td><td><span class="c x">×</span>스크립트만</td><td><span class="c x">×</span>교사용 CL</td><td><span class="c x">×</span></td></tr>
+      <tr><th scope="row">문서형 자료</th><td class="me"><span class="c o">○</span>알지오문서</td><td><span class="c o">○</span></td><td><span class="c o">○</span>Notebook 베타</td><td><span class="c t">△</span></td></tr>
+      <tr><th scope="row">학급·과제 운영</th><td class="me"><span class="c o">○</span>알지오모둠, '26 모니터링·AI 평가 도입 중</td><td><span class="c o">○</span>Classroom</td><td><span class="c o">○</span>Amplify Classroom</td><td><span class="c t">△</span></td></tr>
+      <tr><th scope="row">공유 자료 규모</th><td class="me"><span class="c o">○</span>콘텐츠 약 82만 개(국내)</td><td><span class="c o">○</span>세계 최대</td><td><span class="c o">○</span></td><td><span class="c t">△</span></td></tr>
+      <tr><th scope="row">공개 API·문서</th><td class="me"><span class="c t">△</span>임베드 서비스는 있으나 공식 명령 문서 부족</td><td><span class="c o">○</span></td><td><span class="c o">○</span></td><td><span class="c o">○</span></td></tr>
+      <tr><th scope="row">오프라인 설치형</th><td class="me"><span class="c t">△</span>개발했으나 비공개</td><td><span class="c o">○</span></td><td><span class="c x">×</span></td><td><span class="c x">×</span></td></tr>
+      <tr><th scope="row">접근성(화면 낭독 등)</th><td class="me"><span class="c x">×</span></td><td><span class="c t">△</span></td><td><span class="c o">○</span></td><td><span class="c t">△</span></td></tr>
+      <tr><th scope="row">AI 기능</th><td class="me"><span class="c x">×</span>계획: AI 입력·과제 평가</td><td><span class="c t">△</span></td><td><span class="c t">△</span>시범</td><td><span class="c x">×</span></td></tr>
+      <tr><th scope="row">탐구 과정 데이터</th><td class="me"><span class="c x">×</span>명령시스템 없음</td><td><span class="c t">△</span></td><td><span class="c t">△</span>활동 응답 수준</td><td><span class="c x">×</span></td></tr>
+      <tr><th scope="row">시험·평가 연계</th><td class="me"><span class="c x">×</span></td><td><span class="c t">△</span>일부 국가</td><td><span class="c o">○</span>SAT 등</td><td><span class="c x">×</span></td></tr>
+      <tr><th scope="row">국내 서버·개인정보</th><td class="me"><span class="c o">○</span></td><td><span class="c x">×</span></td><td><span class="c x">×</span></td><td><span class="c x">×</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="position">
+  <h2><span class="n">4</span>알지오매스의 위치</h2>
+  <div class="two">
+    <div class="panel keep">
+      <h3>지켜야 할 강점</h3>
+      <ol>
+        <li><b>공공·국내 기반</b>: 국내 서버와 개인정보 기준. 국가 정책사업·교육청 플랫폼과 직접 연결할 수 있는 유일한 도구</li>
+        <li><b>초등~고등 연속성</b>: 키즈에서 2D·3D로. 해외에서는 Amplify만 이 방향으로 합치는 중</li>
+        <li><b>입체도형 탐구</b>: 쌓기나무·전개도·회전체·단면은 중학교 핵심 내용인데 해외 도구에는 마땅한 것이 없음</li>
+        <li><b>블록코딩</b>: 2D·3D 모두에서 학생이 코딩으로 작도. 정보 교과·AI 교육과 이어지는 고유 영역</li>
+        <li><b>국내 교사 공동체</b>: 콘텐츠 약 82만 개, 모둠 9,600여 개, 교사 조사 1위</li>
+      </ol>
+    </div>
+    <div class="panel gap">
+      <h3>메워야 할 틈</h3>
+      <ol>
+        <li><b>3D 공간 작도·곡면 그래프</b>: 신규 3D가 메울 영역. 하지만 따라잡기만으로는 차별점이 없음</li>
+        <li><b>공개 API·명령 체계</b>: AIEP·교과서·교사 자작 콘텐츠 연계의 전제 조건</li>
+        <li><b>통계 도구</b>: 통그라미·CODAP 수준의 데이터 탐색 도구가 없음</li>
+        <li><b>접근성</b>: 공공 도구라면 화면 낭독·키보드 조작이 필요</li>
+        <li><b>탐구 과정 데이터</b>: 학생이 어떻게 작도했는지 남지 않음</li>
+        <li><b>사용 지표 둔화</b>: 신규 가입자 '23→'24 −19.4%, 모둠 수 '24→'25 −27.7%, 2026년 콘텐츠 수는 연 환산 약 13만 개로 '25년(29.7만 개)의 절반 이하</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="direction">
+  <h2><span class="n">5</span>발전 방향</h2>
+  <p>GeoGebra·Desmos는 기능 폭에서 앞서 있고 무료입니다. 같은 기능을 늦게 만드는 것만으로는 선택받기 어려우므로, 해외 도구가 할 수 없는 일에 집중하고 따라잡기는 교육과정에 꼭 필요한 범위로 한정하는 편이 좋습니다.</p>
+  <div class="dir">
+    <article><span class="k">A</span><h3>국가 플랫폼 안으로 들어가기</h3><p>AIEP·교과서·교육청 플랫폼에 기본 탑재되어, 학생이 따로 가입하지 않아도 수업 흐름 안에서 열리게 합니다. <b>근거</b>: Desmos가 SAT 내장으로 확산된 것과 같은 원리입니다.</p></article>
+    <article><span class="k">B</span><h3>탐구 과정 데이터를 공공 자산으로</h3><p>명령시스템 → xAPI 학습저장소 → 교사용 "작도 과정 다시 보기"와 AIEP 학급 대시보드로 이어지게 합니다. <b>근거</b>: 해외 도구는 국내 개인정보 기준 때문에 교육청 플랫폼과 학생 데이터를 깊게 연결하기 어렵습니다.</p></article>
+    <article><span class="k">C</span><h3>교육과정 순서대로 바로 쓰는 활동 묶음</h3><p>단원별로 복사해서 바로 쓰는 모둠 과제와 5분 탐구 묶음을 만듭니다. <b>근거</b>: Desmos Activity Builder와 GeoGebra 자료실의 강점이 '바로 쓰는 활동'이고, 국내 교과서 순서 자료는 알지오매스가 유리합니다.</p></article>
+    <article><span class="k">D</span><h3>초등 교구에서 중등 도구로 연결</h3><p>키즈의 조작 교구가 2D·3D로 자연스럽게 이어지게 합니다. <b>근거</b>: Amplify가 Polypad와 Desmos를 합쳐 같은 그림을 그리는 중입니다.</p></article>
+    <article><span class="k">E</span><h3>신규 3D는 범위를 좁혀 빨리</h3><p>고등 기하와 중학교 입체도형에 필요한 기능부터 만들고, 기존 3D의 전개도·회전체 단면과 합칠 계획을 함께 세웁니다. <b>근거</b>: GeoGebra 3D 전체를 재현할 필요는 없습니다. 현장 교사가 기존 엔진 위에서 곡면·슬라이더·측정 시제품을 몇 주 만에 만든 사례도 있어, 범위를 좁히면 "2~4년"을 줄일 수 있습니다.</p></article>
+    <article><span class="k">F</span><h3>공개 API와 명령 문서</h3><p>2D·3D 공통 명령 규격을 공개 문서로 내면 교사·업체·교육청이 알지오매스를 끼워 넣어 콘텐츠를 만들 수 있습니다. <b>근거</b>: GeoGebra가 수많은 교과서와 사이트에 들어간 이유가 공식 Apps API입니다.</p></article>
+    <article><span class="k">G</span><h3>통계 도구와 접근성</h3><p>통계는 CODAP 방식을 참고해 별도로 연구하고, 접근성은 공공 도구의 의무로 단계적으로 도입합니다. <b>근거</b>: 통그라미 12.4% 수요, Desmos 접근성 사례.</p></article>
+    <article><span class="k">H</span><h3>AI는 조작할 수 있는 대상으로 바꾸는 데</h3><p>손글씨·음성을 명령으로 바꿔 객체를 만듭니다. 명령시스템 위에서 만들어야 기록과 되돌리기가 됩니다. <b>근거</b>: 해외 도구의 AI는 아직 풀이·튜터 쪽이고, 이 방향은 2.0 문서가 내세운 차별점과 일치합니다.</p></article>
+  </div>
+</section>
+
+<section id="aiep">
+  <h2><span class="n">6</span>AIEP 탑재</h2>
+  <h3>AIEP는 무엇인가</h3>
+  <ul>
+    <li><b>인공지능 맞춤형 교수학습 플랫폼(AIEP)</b>: 서울·인천 등 11개 시·도교육청이 공동 구축했습니다. 구글·웨일 등의 학습관리시스템을 바탕으로 수업 관리를 하나로 모으고, 통합 로그인(SSO)으로 여러 에듀테크를 한 계정으로 쓰게 하며, AI 학급 대시보드로 학습 현황을 보여 줍니다.</li>
+    <li><b>인천</b>: AIEP 통합서비스를 개통해 빅테크·에듀테크와 교육청 자체 플랫폼을 한 화면에 모았습니다. 수학은 매쓰홀릭T·홀링 등 국산 학습 서비스가 연계돼 있습니다.</li>
+    <li><b>전북</b>: AI 디지털 선도학교 100개교 시범 뒤 하반기 전면 도입.</li>
+  </ul>
+  <p class="thesis" style="font-size:16px">지금 AIEP 수학 메뉴는 <strong>문항·학습 서비스 중심</strong>이고 <strong>탐구형 공학도구 자리는 비어 있습니다</strong>. 공공 무료 도구인 알지오매스가 들어갈 명분이 분명합니다.</p>
+
+  <div class="two">
+    <div class="panel">
+      <h3>필요한 이유</h3>
+      <ol>
+        <li><b>진입 장벽 제거</b>: AIEP 계정 하나로 바로 열면 가입·로그인 부담이 사라짐</li>
+        <li><b>AIDT 이후 공백</b>: '25년 AIDT 지위 변경으로 연계가 줄었음('25년 도구 로딩 약 77만 건). AIEP가 그 통로를 이어받음</li>
+        <li><b>데이터 환류</b>: 모둠 과제 결과와 탐구 기록을 학급 대시보드로 보내면 2.0 전략 3(데이터 기반 맞춤 지원)의 실제 사용처가 생김</li>
+        <li><b>정책 근거</b>: 제4차 수학교육 종합계획 추진과제 1-2와 시·도교육청 AI 교육 정책</li>
+      </ol>
+    </div>
+    <div class="panel">
+      <h3>2.0 문서의 SSO 신중론에 대해</h3>
+      <p>[붙임 2-1]은 SSO가 개인정보·계정 체계 부담이 커서 API 기능 연계부터 하자고 했습니다. 그런데 AIEP는 11개 교육청이 이미 표준 SSO 체계를 만들어 둔 상태라, 교육청마다 따로 협의하는 것보다 부담이 적을 수 있습니다.</p>
+      <p><b>제안</b>: "SSO 미추진"을 "AIEP 표준 연동 규격 확인 후 우선 추진"으로 바꾸기.</p>
+    </div>
+  </div>
+
+  <h3>단계 제안</h3>
+  <div class="steps">
+    <div class="step"><span class="when">2027 상반기</span><p>AIEP 에듀테크 목록에 <b>바로가기와 SSO 로그인</b> 등록, 교사·학생 계정 자동 연결</p><span class="note">연동 규격·등록 절차는 교육청 확인 필요</span></div>
+    <div class="step"><span class="when">2027 하반기</span><p>알지오모둠 과제를 AIEP 수업(구글 클래스룸·웨일 LMS)에서 <b>배정·제출</b></p><span class="note">GeoGebra·Desmos의 Google Classroom 연동과 같은 수준</span></div>
+    <div class="step"><span class="when">2028~</span><p>탐구 결과·과정 데이터(xAPI)를 <b>AIEP 학급 대시보드</b>로 전송</p><span class="note">명령시스템·학습저장소가 먼저 있어야 함</span></div>
+  </div>
+  <h3>확인할 것</h3>
+  <ul>
+    <li>AIEP 에듀테크 연동 규격(SSO 방식, 학습 데이터 전송 표준)과 공공기관 서비스 등록 절차</li>
+    <li>11개 교육청 밖의 교육청(경기 등) 플랫폼과의 관계</li>
+    <li>학생 데이터를 보낼 때 개인정보 처리 주체(재단·교육청) 정리</li>
+  </ul>
+</section>
+
+<section id="sources" class="src">
+  <h2><span class="n">7</span>출처</h2>
+  <ul>
+    <li>자문 자료: [붙임1] 알지오매스 중장기 3D 개발 로드맵(2026. 11.), [붙임 2-1] 알지오매스 운영 성과 및 발전 방향 검토(안), [붙임 2-2] 연차별 산출내역</li>
+    <li>Desmos: <a href="https://help.desmos.com/hc/en-us/articles/4405017454477--What-s-New-at-Desmos-Studio">What's New at Desmos Studio</a> · <a href="https://blog.desmos.com/articles/beta-3d-release">3D Calculator 베타</a> · <a href="https://blog.desmos.com/articles/geometry-beta-release/">Geometry 베타</a> · <a href="https://help.desmos.com/hc/en-us/articles/19736835727885-Extending-from-2D-to-3D">2D에서 3D로</a> · <a href="https://amplify.com/news/amplify-acquires-desmos-curriculum-to-build-the-future-of-math-instruction-desmos-calculators-to-remain-independent-and-free-to-all/">Amplify 인수 발표</a> · <a href="https://amplify.com/blog/problem-based-learning/introducing-amplify-classroom/">Amplify Classroom</a> · <a href="https://amplify.com/impact-innovation/">Amplify AI 연구</a> · <a href="https://danmeyer.substack.com/p/how-we-built-discussion-moments">Discussion Moments</a></li>
+    <li>GeoGebra: <a href="https://help.geogebra.org/hc/en-us/articles/15089771663645-Introducing-GeoGebra-Math-Practice">Introducing Math Practice</a> · <a href="https://help.geogebra.org/hc/en-us/articles/15294353125533-Teachers-Using-GeoGebra-Math-Practice-in-class">Math Practice 수업 활용</a></li>
+    <li>Polypad: <a href="https://polypad.amplify.com/faqs">Polypad FAQ</a> · <a href="https://mathigon.org/polypad">Mathigon Polypad</a> · <a href="https://www.techlearning.com/how-to/what-is-polypad-and-how-can-teachers-use-it">Tech&amp;Learning 소개</a></li>
+    <li>AIEP: <a href="https://www.mt.co.kr/stock/2026/02/04/2026020409269630042">아이티센엔텍 AIEP</a> · <a href="https://www.fnewstv.com/news/newsview.php?ncode=1065608738217046">전북 AIEP 전면 도입</a> · <a href="https://www.todayan.com/news/articleView.html?idxno=637369">전북AI 연동</a> · <a href="https://www.gukjenews.com/news/articleView.html?idxno=3692664">인천 AIEP 통합서비스(국제뉴스)</a> · <a href="https://www.kmaeil.com/news/articleView.html?idxno=651438">인천 AIEP 통합서비스(경인매일)</a> · <a href="https://www.mt.co.kr/industry/2026/07/14/2026071409113876427">체더스 인천 사업 수주</a> · <a href="https://www.in-ed.co.kr/news/articleView.html?idxno=32358">인천교육일보</a></li>
+    <li>2026년 최신 기능 가운데 공식 발표로 확인하지 못한 내용은 <span class="tag">확인 필요</span>로 표시했습니다.</li>
+  </ul>
+</section>
+</main>
+</div>
+</body>
+</html>
