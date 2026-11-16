@@ -107,6 +107,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     <li><a href="#mobile">모바일 사용성</a></li>
     <li><a href="#speed">개선 속도</a></li>
     <li><a href="#direction">발전 방향</a></li>
+    <li><a href="#algeo3d">알지오3D 방향</a></li>
     <li><a href="#aiep">AIEP 탑재</a></li>
     <li><a href="#sources">출처</a></li>
   </ol>
@@ -416,8 +417,35 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   </div>
 </section>
 
+<section id="algeo3d">
+  <h2><span class="n">9</span>알지오3D 방향</h2>
+  <p>지금 3D 계획은 개발 업체의 기술 로드맵(신규 3D 4단계, 2~4년)만 있고, 알지오매스 2.0 연차별 이행계획(2027~2030)과 산출내역에는 3D가 없습니다. 기존 3D(쌓기나무·전개도·회전체·단면)는 "유지, 이관은 추후 검토"입니다.</p>
+  <p class="thesis" style="font-size:16px">목표 제안: <strong>"보고, 만지고, 꺼내 쓰는 3D"</strong>. 중·고 공간 도형을 화면에서 작도·변환하고, 만든 도형을 AR·3D 프린팅·다른 앱으로 꺼내 쓰는 공공 3D 탐구 도구. 기존 3D의 강점과 신규 3D의 공간 작도·그래프를 <strong>하나의 알지오3D로</strong> 합치는 것을 최종 목표로.</p>
+
+  <div class="dir">
+    <article><span class="k">AR</span><h3>알지오매스 자체 증강현실</h3><p>만든 도형을 휴대폰·태블릿 카메라로 책상 위에 띄워 둘러봅니다. 앱 설치 없이 웹에서(안드로이드는 웹 AR, 아이폰·아이패드는 USDZ 빠른 보기), 작품마다 QR을 만들어 교실 화면에서 바로 열고, 알지오모둠 과제 제출물을 AR 갤러리로 모아 봅니다. 격자 1칸 = 1cm처럼 <b>실제 크기</b>로 보면 부피·겨넓이를 몸으로 느낄 수 있습니다. <b>근거</b>: 현장 교사가 만든 3D 그림판 앱에서 학생들이 회전체 작품을 GLB·USDZ로 내보내 AR 갤러리로 공유하는 수업을 이미 운영했습니다.</p></article>
+    <article><span class="k">⤓</span><h3>색·재질·수학 정보를 담은 내보내기</h3><p>지금은 STL(모양만, 색 없음)뿐입니다. <b>GLB</b>에는 면별 색·투명도·재질과 도형 종류·꼭짓점 좌표·부피·겨넓이·단위 같은 수학 정보를, <b>USDZ</b>에는 색·재질과 실제 크기를 담습니다(컬러 3D 프린팅용 3MF·OBJ는 검토). 수학 정보가 있으면 AR에서 도형을 눌렀을 때 "정사각뿔, 부피 ○○"을 보여 주거나 다시 불러올 때 도형을 되살릴 수 있습니다. <b>근거</b>: 현장 시제품에서 GLB(입체별 색·무늬, 도형 유형 정보)·USDZ(격자 1칸=2cm) 내보내기를 사흘 안에 붙이고 자동 검사 139개를 통과했습니다.</p></article>
+    <article><span class="k">⟳</span><h3>3D 모델 변환 도구</h3><p><b>대칭이동</b>(평면·직선·점에 대해, 원래 도형과 겹쳐 보기), <b>회전이동</b>(축·각도, 슬라이더로 각도를 연속으로 바꾸며 자취 보기), <b>평행이동</b>(벡터·화살표 끌기), <b>확대·축소</b>(중심·배율). 도형을 고르면 축별 화살표·회전 고리가 나타나는 <b>터치용 손잡이</b>와 숫자 입력을 함께 둭니다. 쌓기나무·입체도형·작도한 도형 모두에 같은 도구를 써서 기존 3D와 신규 3D를 잇습니다. <b>교육과정</b>: 중1 회전체, 공통수학2 도형의 이동을 공간으로 넓히기, 고등 「기하」 좌표공간.</p></article>
+  </div>
+
+  <h3>연차별 제안 (2.0 이행계획에 3D 줄 추가)</h3>
+  <div class="tablebox">
+  <table>
+    <thead><tr><th scope="col">시기</th><th scope="col">기존 3D</th><th scope="col">신규 3D</th><th scope="col">공통</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">2027 상반기</th><td>모바일 개선(다각형 닫기·단추·미리보기 선), <b>GLB·USDZ 내보내기</b></td><td>1단계 시범판(점·선·평면·교점·저장), 2D와 공통 명령 규격</td><td>최소 공개 API</td></tr>
+      <tr><th scope="row">2027 하반기</th><td><b>웹 AR 보기 + QR</b>, 실제 크기</td><td>중학교 활동 우선(위치 관계·겨넓이·부피)</td><td>알지오문서·모둠 연동, 시범학교</td></tr>
+      <tr><th scope="row">2028</th><td><b>변환 도구</b>(대칭·회전·평행·닮음, 터치 손잡이)</td><td>2단계(곡면·슬라이더·수식 연동)</td><td>탐구 데이터 수집, 모둠 AR 갤러리</td></tr>
+      <tr><th scope="row">2029</th><td>신규 3D로 옮길지 결정</td><td>3단계(음함수·매개변수·교선·측정)</td><td>AI 입력(스케치 → 입체) 시범</td></tr>
+      <tr><th scope="row">2030</th><td colspan="2"><b>하나의 알지오3D로 통합</b>, 4단계(블록코딩·플러그인)</td><td>AIEP·교육청 플랫폼 연계 확대</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">각 단계는 7절의 '실험실 → 정식 반영' 방식으로 진행하면 더 당길 수 있습니다. 예산은 산출내역에 3D 줄을 따로 만들어 산정합니다.</p>
+</section>
+
 <section id="aiep">
-  <h2><span class="n">9</span>AIEP 탑재</h2>
+  <h2><span class="n">10</span>AIEP 탑재</h2>
   <h3>AIEP는 무엇인가</h3>
   <ul>
     <li><b>인공지능 맞춤형 교수학습 플랫폼(AIEP)</b>: 서울·인천 등 11개 시·도교육청이 공동 구축했습니다. 구글·웨일 등의 학습관리시스템을 바탕으로 수업 관리를 하나로 모으고, 통합 로그인(SSO)으로 여러 에듀테크를 한 계정으로 쓰게 하며, AI 학급 대시보드로 학습 현황을 보여 줍니다.</li>
@@ -458,7 +486,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 </section>
 
 <section id="sources" class="src">
-  <h2><span class="n">10</span>출처</h2>
+  <h2><span class="n">11</span>출처</h2>
   <ul>
     <li>자문 자료: [붙임1] 알지오매스 중장기 3D 개발 로드맵(2026. 11.), [붙임 2-1] 알지오매스 운영 성과 및 발전 방향 검토(안), [붙임 2-2] 연차별 산출내역</li>
     <li>Desmos: <a href="https://help.desmos.com/hc/en-us/articles/4405017454477--What-s-New-at-Desmos-Studio">What's New at Desmos Studio</a> · <a href="https://blog.desmos.com/articles/beta-3d-release">3D Calculator 베타</a> · <a href="https://blog.desmos.com/articles/geometry-beta-release/">Geometry 베타</a> · <a href="https://help.desmos.com/hc/en-us/articles/19736835727885-Extending-from-2D-to-3D">2D에서 3D로</a> · <a href="https://amplify.com/news/amplify-acquires-desmos-curriculum-to-build-the-future-of-math-instruction-desmos-calculators-to-remain-independent-and-free-to-all/">Amplify 인수 발표</a> · <a href="https://amplify.com/blog/problem-based-learning/introducing-amplify-classroom/">Amplify Classroom</a> · <a href="https://amplify.com/impact-innovation/">Amplify AI 연구</a> · <a href="https://danmeyer.substack.com/p/how-we-built-discussion-moments">Discussion Moments</a></li>
